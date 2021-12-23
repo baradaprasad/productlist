@@ -1,24 +1,21 @@
 import React from 'react'
-import { ReactComponent as SearchIcon } from '../search.svg';
+import { useHistory } from 'react-router-dom'
+
 export default function Header() {
+    const history=useHistory();
+    const onLogOut=()=>{
+        localStorage.removeItem('product')
+        history.replace('/login')
+    }
     return (
         <>
-            <div>
-                <h1>Dashboard</h1>
+            <div className="topnav">
+                <h2 style={{flex:1}}>Dashboard</h2>
+                <button className='button btnok' style={{}} onClick={onLogOut}>Logout</button>
+              
+               
             </div>
-            <div>
-                <input placeholder="Search"></input>
-                <span><SearchIcon /></span>
-            </div>
-            <button>AddItem</button>
-            <div>
-                <h3>Sort</h3>
-                <select name="" id="">
-                    <option value="">A-Z</option>
-                    <option value="">Z-A</option>
-
-                </select>
-            </div>
-            </>
-    )        
+           
+        </>
+    )
 }

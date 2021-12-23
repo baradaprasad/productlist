@@ -21,6 +21,10 @@ export default function Login() {
         })
     }
     const submitLogin = () => {
+        if(!user.email.trim()|| !user.password.trim()){
+            alert('Enter Valid Email and password')
+            return;
+        }
         console.log("user", user)
         const strUsers = localStorage.getItem("product-users");
         let userList = [];
@@ -53,21 +57,21 @@ export default function Login() {
 
 
     return (
-        <div>
-            <div>
-                <label>Email</label>
-                <input type="email" onChange={onChangeEmail} value={user.email} />
+        <div className='container width100'>
+            <div >
+                <label style={{display:'block'}}><b>Email</b></label>
+                <input className='width100' type="email" onChange={onChangeEmail} value={user.email} required />
+            <br />
+            
+                <label style={{display:'block'}}><b>Password</b></label>
+                <input className='width100' type="password" onChange={onChangePassword} value={user.password} required />
             </div><br />
             <div>
-                <label>Password</label>
-                <input type="password" onChange={onChangePassword} value={user.password} />
-            </div><br />
-            <div>
-                <button onClick={submitLogin}>LogIn</button>
+                <button  className='button btnok width100' onClick={submitLogin}>LogIn</button>
             </div>
             <div>
                 <p>If you not registred before please SignUp Here</p>
-                <button onClick={clickSignUp}>SignUp</button>
+                <button className='button success width100' onClick={clickSignUp}>SignUp</button>
             </div>
         </div>
     )

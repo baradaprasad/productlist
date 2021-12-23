@@ -39,6 +39,10 @@ export default function Signup() {
         history.push("/login")
     }
     const clickSignUp = () => {
+        if(!user.email.trim()|| !user.password.trim()|| !user.fname.trim()|| !user.lname.trim()){
+            alert('Enter Valid Name, Email and password')
+            return;
+        }
         const strUsers = localStorage.getItem("product-users");
         let userList = [];
         if (strUsers) {
@@ -51,33 +55,33 @@ export default function Signup() {
 
 
     return (
-        <div>
+        <div  className='container '>
             <div>
                 <h1>SignUp Here</h1>
             </div>
             <div>
-                <label>First Name</label>
-                <input type="text" onChange={onChangeFname} value={user.fname}></input>
+                <label style={{display:'block'}}><b>First Name</b></label>
+                <input className='width100' type="text" onChange={onChangeFname} value={user.fname}></input>
 
             </div><br />
             <div>
-                <label>Last Name</label>
-                <input type="text" onChange={onChangeLname} value={user.lname}></input>
+                <label style={{display:'block'}}><b>Last Name</b></label>
+                <input className='width100' type="text" onChange={onChangeLname} value={user.lname}></input>
             </div><br />
             <div>
-                <label>Email</label>
-                <input type="email" onChange={onChangeEmail} value={user.email}></input>
+                <label style={{display:'block'}}><b>Email</b></label>
+                <input className='width100' type="email" onChange={onChangeEmail} value={user.email}></input>
             </div><br />
             <div>
-                <label>Password</label>
-                <input type="password" onChange={onChangePassword} value={user.password}></input>
+                <label style={{display:'block'}}><b>Password</b></label>
+                <input className='width100' type="password" onChange={onChangePassword} value={user.password}></input>
             </div><br />
             <div>
-                <button onClick={clickSignUp}>SignUp</button>
+                <button className='button btnok width100' onClick={clickSignUp}>SignUp</button>
             </div>
             <div>
                 <p>Already have an account log in here </p>
-                <button onClick={submitLogin}>Login</button>
+                <button  className='button success width100' onClick={submitLogin}>Login</button>
             </div>
         </div>
     )
